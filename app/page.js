@@ -1,8 +1,12 @@
 // app/page.js
 import Image from "next/image";
 import Link from "next/link";
-import shirtImg from "../app/shirt.jpg";
-import eliteImg from '../app/elite.png'
+import womens from "../app/womens.png";
+import mens from "../app/mens.png";
+import kids from "../app/kids.png";
+import accesstries from "../app/accesstries.png";
+
+import eliteImg from "../app/elite.png";
 
 const brands = [
   {
@@ -23,14 +27,63 @@ const brands = [
   },
 ];
 
+const categories = [
+  {
+    id: 1,
+    src: womens,
+    alt: "women dresses",
+    className: "col-span-2 row-span-4",
+    description: "Women"
+  },
+  {
+    id: 2,
+    src: mens,
+    alt: "men dresses",
+    className: "row-span-2",
+    description: "Mens"
+
+  },
+  {
+    id: 3,
+    src: kids,
+    alt: "kids dresses",
+    className: "row-span-2",
+    description: "Kids"
+
+  },
+  {
+    id: 4,
+    src: accesstries,
+    alt: "accessories",
+    className: "col-span-2 row-span-2",
+    description: "accesstries"
+  },
+];
+
 export default function HomePage() {
   return (
-    <div className="min-h-screen -mt-18 flex flex-col items-center justify-center text-center p-6 text-white">
+    <div className="min-h-screen -mt-6 flex flex-col items-center justify-center text-center p-6 text-white">
       {/* Hero Section */}
-      <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-        Welcome to My Store
-      </h1>
-      <p className="text-lg sm:text-xl mb-6">
+      <h1 className="text-4xl sm:text-5xl font-bold mb-12">Shop by Category</h1>
+      <div className="grid h-[450px] md:grid-cols-3 gap-4 lg:gap-8 lg:grid-cols-4 lg:grid-rows-4">
+
+        {categories.map((item) => (
+          <div
+            key={item.id}
+            className={`cursor-pointer rounded-3xl transform overflow-hidden transition duration-500 ease-in-out 
+              hover:scale-103 hover:-translate-y-1 hover:border-4  border-amber-300
+              ${item.className}`}
+          >
+            <Image
+              src={item.src}
+              alt={item.alt}
+              className="w-full h-full overflow-hidden object-cover rounded-2xl"
+            />
+          </div>
+        ))}
+      </div>
+
+      <p className="text-lg sm:text-xl mt-12 mb-6">
         Discover the latest fashion at unbeatable prices.
       </p>
 
